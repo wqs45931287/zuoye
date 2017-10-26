@@ -1,0 +1,523 @@
+/**
+ * Created with JetBrains WebStorm.
+ * User: tianyun
+ * Date: 15-11-24
+ * Time: 下午2:55
+ * To change this template use File | Settings | File Templates.
+ */
+define("vr.tpl8008_pre", ["$"], function($){
+    var tagClsMap = ['cleaning','fee','anytime'];
+    var fnMap = {'精准租房':'creJzZfItem','精准二手房':'creJzEsfItem'};
+    var vrCreate = function (prms){
+        $.extend(this,prms);
+        this.titleLinkId = this.idPre('title');
+        this.clsPre2 += this.vrId+'-'+this.tab+'-';
+        this.pagerBox = this.clsPre2 + 'pager';
+        this.slctOuterBox = this.clsPre2 + 'slctOuterBox';
+        this.listBox = this.clsPre2 + 'dataListBox';
+        this.panelBox = this.clsPre2 + 'panelBox';
+        /*if(this.isCurrent&&!this.queryStr.buildingname){
+            var ss = '<em>'+this.queryStr.buildingAlias+'</em>';
+            if(this.vrId ==8008){
+                ss += '房源_最新房源';
+            }else if(this.vrId ==8009){
+                ss += '二手房_最新房源';
+            }else{
+                ss += '租房_最新房源';
+            }
+            $('#'+this.titleLinkId).html(ss);
+        }*/
+        if(this.isCurrent){
+            var ss = '<em>'+this.buildingname+'</em>';
+            if(this.vrId ==8008){
+                ss += '二手房_最新房源';
+            }else if(this.vrId ==8009){
+                ss += '二手房_最新房源';
+            }else{
+                ss += '租房_最新房源';
+            }
+            $('#'+this.titleLinkId).html(ss);
+        }
+    };
+    vrCreate.prototype = {
+        constructor: vrCreate,
+        protocol: 'http',
+        vrId:'8008',
+        classId:'2000',
+        queryKey:'',
+        fVal:'1000',
+        rankId:'3',
+        tab:'1',
+        clsPre: 'vr15111251-',
+        clsPre2: 'js15111251-',
+        vrType:'精准二手房',
+        requestPrms: {},
+//        requestHead: '://brandintegrate.epro.sogou.com/',
+        requestHead: '://brandhouse.epro.sogou.com/',
+        isFirstRequest: true,
+        isCurrent: true,
+        zufangMaps: {
+            'price':[
+                {tar:0,name:'不限'},
+                {tar:1,name:'低于500'},
+                {tar:2,name:'500~1000元'},
+                {tar:3,name:'1000~1500元'},
+                {tar:4,name:'1500~2000元'},
+                {tar:5,name:'2000~3000元'},
+                {tar:6,name:'3000~4500元'},
+                {tar:7,name:'4500元以上'}
+            ],
+            'house':[
+                {tar:0,name:'不限'},
+                {tar:1,name:'一室'},
+                {tar:2,name:'二室'},
+                {tar:3,name:'三室'},
+                {tar:4,name:'四室'},
+                {tar:5,name:'四室以上'}
+            ],
+            'rent':[
+                {tar:0,name:'不限'},
+                {tar:1,name:'整套出租'},
+                {tar:2,name:'单间出租'},
+                {tar:3,name:'床位出租'}
+            ]
+        },
+        ershoufangMaps: {
+            'price':[
+                {tar:0,name:'不限'},
+                {tar:1,name:'100万以下'},
+                {tar:2,name:'100~150万'},
+                {tar:3,name:'150~200万'},
+                {tar:4,name:'200~250万'},
+                {tar:5,name:'250~300万'},
+                {tar:6,name:'300~500万'},
+                {tar:7,name:'500~800万'},
+                {tar:8,name:'800~1000万'},
+                {tar:9,name:'1000万以上'}
+            ],
+            'house':[
+                {tar:0,name:'不限'},
+                {tar:1,name:'一室'},
+                {tar:2,name:'二室'},
+                {tar:3,name:'三室'},
+                {tar:4,name:'四室'},
+                {tar:5,name:'四室以上'}
+            ],
+            'area':[
+                {tar:0,name:'不限'},
+                {tar:1,name:'50平米以下'},
+                {tar:2,name:'50-70平米'},
+                {tar:3,name:'70-90平米'},
+                {tar:4,name:'90-110平米'},
+                {tar:5,name:'110-130平米'},
+                {tar:6,name:'130-150平米'},
+                {tar:7,name:'150-200平米'},
+                {tar:8,name:'200-300平米'},
+                {tar:9,name:'300平米以上'}
+            ]
+        },
+        getTarByName: function(list,name){
+            for(var i=0;i<list.length;i++){
+                if(list[i].name==name)return list[i].tar;
+            }
+            return null;
+        },
+        idPre: function (nm,rank){return 'sogou_vr_'+this.classId+'_'+nm+'_'+(rank || this.rankId);},
+        ajax: function (url, data, fn) {
+            var pms = {};
+            if (data) {
+                for (var i in data) {
+                    //pms[i] = encodeURIComponent(data[i]);
+                    pms[i] = data[i];
+                }
+            }
+
+            var dt = {
+                type: "get",
+                url: url,
+                async: true,
+                data: pms,
+                cache: false, //默认值true
+                dataType: "jsonp",
+                success: function (rs) {
+                    if(fn)fn(rs);
+                },
+                error:function(a,b,c){
+                    if(fn)fn();     //请求失败直接删除vr展现
+                    if(console){
+                        console.log("requesterror："+b);
+                    }
+                }
+            };
+            $.ajax(dt);
+        },
+        bodyLoad: {
+            list:[],
+            reg: function (fn){
+                this.list.push(fn);
+            },
+            exc: function (isClear){
+                if(!this.list || this.list.length==0)return;
+                for(var i=0;i<this.list.length;i++){
+                    this.list[i]();
+                }
+                if(isClear){
+                    this.clear();
+                }
+            },
+            clear: function (){
+                this.list.length = 0;
+            }
+        },
+        pvTongji: function (prms){
+            //pv统计
+            request(this.protocol +'://brandapi.sogou.com/cpcvr.brand.sogou.com/brandstat', $.extend({},prms,{
+                'pid':'PV'
+            }));
+        },
+        creSlctItem: function (title,data,name,selectedItem,n){
+            selectedItem = selectedItem || '不限';
+            var boxCls = title.length<=2?'offset':'no-pd';
+            var boxname = this.clsPre2+name + 'SlctBox',itemname = this.clsPre2+name + 'SlctItem',hideBox = this.clsPre2+name + 'HideBox',
+                showBtn = hideBox + '-showBtn',hideBtn = hideBox + '-hideBtn';
+            var html = ['<tr><th><span>',title,'：</span></th><td><div class="aBox ',boxCls,' ',boxname,'">'];
+
+            for(var i=0;i<data.length;i++){
+                var str = ['<a href="javascript:void(0);" onclick="return false;" id="'+this.idPre(name+this.tab+'0'+i)+'" tar="',data[i].tar,'" _name="',name,'" ',selectedItem&&selectedItem==data[i].name?'class="cur"':'','>',data[i].name,'</a>'].join('');
+                if(n&&n==i){
+                    html.push('<a href="javascript:void(0);" onclick="return false;" id="'+this.idPre(name+this.tab+'Open')+'" class="show '+showBtn+'">展开</a>');
+                    html.push('<a href="javascript:void(0);" onclick="return false;" id="'+this.idPre(name+this.tab+'Close')+'" class="hide '+hideBtn+'" style="display:none;">收起</a>');
+                    html.push('<div class="',hideBox,'" style="display:none;">');
+                }
+                html.push(str);
+                if(n&&i==data.length-1){
+                    html.push('</div>');
+                }
+            }
+            html.push('</div></td></tr>');
+            var that = this;
+            if(n){
+                this.bodyLoad.reg(function (){
+                    $('.'+showBtn).on('click',function (){
+                        $(this).hide();
+                        $('.'+hideBtn).show();
+                        $('.'+hideBox).show();
+                    });
+                    $('.'+hideBtn).on('click',function (){
+                        $(this).hide();
+                        $('.'+showBtn).show();
+                        $('.'+hideBox).hide();
+                    });
+
+                });
+            }
+            this.bodyLoad.reg(function (){
+                $('.'+boxname).find('a').on('click',function (){
+                    var $this = $(this);
+                    if($this.hasClass('show')||$this.hasClass('hide'))return;
+                    $('.'+boxname).find('.cur').removeClass('cur');
+                    $this.addClass('cur');
+                    that.requestList();
+                });
+            });
+
+            return html.join('');
+        },
+        creSlctItemList: function (list){
+            var html = [];
+            for(var i=0;i<list.length;i++){
+                html.push(this.creSlctItem(list[i].title,list[i].data,list[i].name,list[i].selectedItem,list[i].n))
+            }
+            return html.join('');
+        },
+        pager: function (num,pageNo){
+            var pgnum = Math.ceil(num/ 3),pagecur= pageNo || 1;
+            pgnum = pgnum>5?5:pgnum;
+            var $box = $('.'+this.pagerBox),that = this;
+            that.crePager($box,pgnum,pagecur);
+            if(this.isFirstRequest){
+                $box.on('click','a',function (){
+                    var $this = $(this);
+                    var val = $this.text();
+                    if(val=='上一页'&&pagecur>1){
+                        pagecur --;
+                    }else if(val=='下一页'&&pagecur<pgnum){
+                        pagecur ++;
+                    }else if(parseInt(val)>=1&&parseInt(val)<=pgnum){
+                        pagecur = parseInt(val);
+                    }
+                    that.requestList(pagecur);
+//                that.crePager($box,pgnum,pagecur);
+                })
+            }
+
+        },
+        crePager: function ($box,num,cur){
+            var html = ['<a href="javascript:void(0);" id="'+this.idPre('pagerPre'+this.tab)+'" onclick="return false" ',cur==1?'style="visibility:hidden;"':'','>上一页</a>'];
+            for(var i=1;i<=num;i++){
+                var pagerId = this.idPre('pager'+this.tab+i);
+               if(i==cur){
+                   html.push('<span id="'+pagerId+'" class="page-cur">'+cur+'</span>');
+               }else{
+                   html.push('<a id="'+pagerId+'" href="javascript:void(0);" onclick="return false;">'+i+'</a>');
+               }
+            }
+            html.push(['<a href="javascript:void(0);" id="'+this.idPre('pagerNext'+this.tab)+'" onclick="return false" ',cur==num?'style="visibility:hidden;"':'','>下一页</a>'].join(''));
+            $box.html(html.join(''));
+            $box.show();
+        },
+        creList: function (data){
+            var fn = this[fnMap[this.vrType]],html = [],len = data.length>3?3:data.length;
+            for(var i=0;i<len;i++){
+                html.push(fn.call(this,data[i],i+1));
+            }
+            var $box = $('.'+this.listBox);
+            $box.html(html.join(''));
+            $box.find('.b-list-r').on('click',function (e){
+                var tar = e.target || e.srcElement;
+                if(tar.className != 'map-addr-url'){
+                    $(this).find('.b-list-r-lnk').get(0).click();
+                }
+            });
+        },
+        creTexing: function (obj){
+            var zu = [];
+            for(var o in obj){
+                if(obj[o]&&obj[o]!='-'){
+                    if(o=='area'){
+                        obj[o] = '<span>'+obj[o]+'m²</span>'
+                    }else if(o=='louceng'){
+                        obj[o] = obj[o].replace(/\s/g,'');
+                        obj[o] = '<span>'+this.subStr(obj[o],6,1)+'</span>'
+                    }else{
+                        obj[o] = '<span>'+this.subStr(obj[o],6,1)+'</span>'
+                    }
+                    zu.push(obj[o]);
+                }
+            }
+            return zu.join('<em>|</em>');
+        },
+        creJzEsfItem: function (obj,i){
+            var html = [
+                '<li>',
+                    '<div class="b-list-l">',
+                        '<a href="',obj.picmore,'" target="_blank" class="img-wrap" id="',this.idPre('productPic',i),'">',
+                            '<img src="',this.protocol=="https"?'https://img01.sogoucdn.com/v2/thumb?appid=100200024&url='+obj.picurl:obj.picurl,'" style="display:none;" onload="this.style.display=\'\';">',
+                            '<span class="mask">',
+                                '<em class="text">图片相册',obj.picnumber,'</em>',
+                                '<span class="shadow"></span>',
+                            '</span>',
+                        '</a>',
+                    '</div>',
+                    '<div class="b-list-r">',
+                        '<a class="b-list-r-lnk" id="',this.idPre('productBlock',i),'" target="_blank" href="',obj.picmore,'" style="display:none;"></a>',
+                        '<div class="price">',
+                            '<p>',obj.totalprice,'万</p>',
+                            '<p class="unit-p">',parseInt(obj.junjia),'元/m²</p>',
+                            '<p class="lots">',obj.come,'</p>',
+                        '</div>',
+                        '<div class="infor">',
+                            '<h2>',
+                                /*'<iv>',obj.housetype?obj.housetype:'','</span>',
+                                obj.louceng?['<em>|</em>',
+                                '<span>',obj.louceng,'</span>'].join(''):'',
+                                obj.chaoxiang?['<em>|</em>',
+                                '<span>',obj.chaoxiang,'</span>'].join(''):'',
+                                obj.area?['<em>|</em>',
+                            '<span>',obj.area,'m²</span>'].join(''):'',*/
+                                this.creTexing({housetype:obj.housetype,louceng:obj.louceng,chaoxiang:obj.chaoxiang,area:obj.area}),
+                            '</h2>',
+                            '<p class="address"><span id="id3">[',obj.district,']',this.subStr(obj.buildingaddr,15),'</span><a href="',obj.addrurl,'" id="',this.idPre('productMap',i),'" class="map-addr-url" target="_blank"></a></p>',
+                            this.creTagList(obj.tag),
+                        '</div>',
+                    '</div>',
+                '</li>'
+            ];
+            return html.join('');
+        },
+        creJzZfItem: function (obj,i){
+
+            var html = [
+                '<li>',
+                    '<div class="b-list-l">',
+                        '<a href="',obj.picmore,'" target="_blank" class="img-wrap" id="',this.idPre('productPic',i),'">',
+                            '<img src="',this.protocol=="https"?'https://img01.sogoucdn.com/v2/thumb?appid=100200024&url='+obj.picurl:obj.picurl,'" style="display:none;" onload="this.style.display=\'\'">',
+                            '<span class="mask">',
+                                '<em class="text">图片相册',obj.picnumber,'</em>',
+                                '<span class="shadow"></span>',
+                            '</span>',
+                        '</a>',
+                    '</div>',
+                    '<div class="b-list-r">',
+                        '<a class="b-list-r-lnk" id="',this.idPre('productBlock',i),'" target="_blank" href="',obj.picmore,'" style="display:none;"></a>',
+                        '<span class="price">',
+                            '<span>',obj.totalprice,'元/月</span>',
+                            '<span class="lots">',obj.come,'</span>',
+                        '</span>',
+                        '<div class="infor">',
+                            '<h2>',
+                                /*'<span>',obj.fangshi,'</span>',
+                                '<em>|</em>',
+                                '<span>',obj.zhuangxiu,'</span>',
+                                '<em>|</em>',
+                                '<span>',obj.chaoxiang,'</span>',
+                                '<em>|</em>',
+                                '<span>',obj.area,'m²</span>',*/
+                                this.creTexing({fangshi:obj.fangshi,zhuangxiu:obj.zhuangxiu,chaoxiang:obj.chaoxiang,area:obj.area}),
+                            '</h2>',
+                            '<p class="address"><span id="id3">[',obj.district,']',this.subStr(obj.buildingaddr,15),'</span><a href="',obj.addrurl,'" id="',this.idPre('productMap',i),'" class="map-addr-url" target="_blank"></a></p>',
+                            this.creTagList(obj.tag),
+                        '</div>',
+                    '</div>',
+                '</li>'
+            ];
+            return html.join('');
+        },
+        subStr: function (str,num,tp){
+            var ss;
+            if(tp){
+                ss = str.length>num?str.substr(0,num):str;
+            }else{
+                ss = str.length>num?str.substr(0,num)+'...':str;
+            }
+            return ss;
+        },
+        creTagList: function (str){
+            if(!str || str.length<1 || str=='-')return '';
+            var zu = str.split(/[;；]+/);
+            var html = ['<div class="links">'],k=0;
+            for(var i=0;i<zu.length;i++){
+                if(!zu[i]||zu[i]==''||k>=3)continue;
+                html.push('<span class="'+tagClsMap[k]+'">'+this.subStr(zu[i],6,1)+'</span>');
+                k++;
+            }
+            html.push('</div>');
+            return html.join('');
+        },
+        getParams: function (pageNo){
+            var prms = $.extend({
+                fquery:encodeURIComponent(this.queryKey),
+                pageSize:3,
+                pageNo:pageNo||1
+            },this.requestPrms);
+            $('.'+this.slctOuterBox).find('.cur').each(function (){
+                prms[$(this).attr('_name')] = $(this).attr('tar');
+            });
+            return prms;
+        },
+        requestList: function (pageNo){
+            var prms = this.getParams(pageNo),that = this;
+            this.ajax(this.protocol + this.requestHead + this.requestUrl,prms,function (rs){
+                if(!rs || !rs.data || !rs.data.datalist || rs.data.datalist.length<3){
+                    if(that.isFirstRequest ){
+                        that.removeVr();
+                        return;
+                    }
+                    if(!rs || !rs.data || !rs.data.datalist){
+                        if(!that.isFirstRequest){
+                            $('.'+that.listBox).html(that.creNodata());
+                            $('.'+that.pagerBox).hide();
+                        }
+                        return;
+                    }
+                }
+                var data = rs.data.datalist;
+                that.creList(data);
+                that.titleLinkUrl = data[0].clickurl;
+                if(that.isCurrent){
+                    that.setTitleUrl();
+                }
+                that.pager(rs.data.totalNumber,pageNo);
+                that.isFirstRequest = false;
+            });
+        },
+        creNodata: function (){
+            return '<li class="'+this.clsPre+'nodata" style="text-align:center;">暂无符合条件数据，请重新筛选。</li>';
+        },
+        removeVr: function (){
+
+        },
+        setTitleUrl: function (){
+            $('#'+this.titleLinkId).attr('href',this.titleLinkUrl);
+        },
+        setCurrent: function (){
+            this.isCurrent = true;
+            this.setTitleUrl();
+        },
+        crePanel: function (ulcls,slctItemlist){
+            var html = [
+                '<div class="tb-wrap',this.vrType=='精准租房'?' loca-rent':'','">',
+                    '<table class="sortTable"><tbody class="',this.slctOuterBox,'">',
+                        this.creSlctItemList(slctItemlist),
+                    '</tbody></table>',
+                '</div>',
+                '<ol class="b-list',ulcls?' '+ulcls:'',' ',this.listBox,'">',
+                '</ol>',
+                '<div class="jzwdPage ',this.pagerBox,'">',
+                '</div>'
+            ];
+            var that = this;
+            this.bodyLoad.reg(function (){
+                that.requestList();
+            });
+            return html.join('');
+        }
+    };
+    vrCreate.getQueryInfo = vrCreate.prototype.getQueryInfo = function (str){
+        if(!str)return;
+        str = str.split('||');
+        var obj = {};
+        for( var o in str ){
+            var sss = str[o].split('::');
+            obj[sss[0]]=sss[1];
+        }
+        return obj;
+    };
+    vrCreate.ToCDB = vrCreate.prototype.ToCDB = function (str)
+    {
+        var tmp = "";
+        for(var i=0;i<str.length;i++)
+        {
+            if(str.charCodeAt(i)>65248&&str.charCodeAt(i)<65375)
+            {
+                tmp += String.fromCharCode(str.charCodeAt(i)-65248);
+            }
+            else
+            {
+                tmp += String.fromCharCode(str.charCodeAt(i));
+            }
+        }
+        tmp = tmp.replace(/\s+/g,' ');
+        if(tmp.indexOf('solo')==0&&tmp.indexOf('town')!=-1)tmp = 'solo town丽舍';
+        return tmp;
+    };
+
+    return vrCreate;
+} );
++��Z      Y��Y��>S�HZ�z   /    :https://galaxy.sogoucdn.com/galaxy/8008_pre.js necko:classified 1 strongly-framed 1 security-info FnhllAKWRHGAlo+ESXykKAAAAAAAAAAAwAAAAAAAAEaphjojH6pBabDSgSnsfLHeAAQAAgAAAAAAAAAAAAAAAAAAAAAB4vFIJp5wRkeyPxAQ9RJGKPqbqVvKO0mKuIl8ec8o/uhmCjImkVxP+7sgiYWmMt8FvcOXmlQiTNWFiWlrbpbqgwAAAAAAAAa0MIIGsDCCBZigAwIBAgIQIarWi8WLPSAGACyVJ4HdQjANBgkqhkiG9w0BAQsFADB+MQswCQYDVQQGEwJVUzEdMBsGA1UEChMUU3ltYW50ZWMgQ29ycG9yYXRpb24xHzAdBgNVBAsTFlN5bWFudGVjIFRydXN0IE5ldHdvcmsxLzAtBgNVBAMTJlN5bWFudGVjIENsYXNzIDMgU2VjdXJlIFNlcnZlciBDQSAtIEc0MB4XDTE3MDYyNzAwMDAwMFoXDTE4MDkyNjIzNTk1OVowgbMxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlqaW5nMTcwNQYDVQQKDC5CZWlqaW5nIFNvZ291IFRlY2hub2xvZ3kgRGV2ZWxvcG1lbnQgQ28uLCBMdGQuMS4wLAYDVQQLDCVUZWNobm9sb2d5IGFuZCBFbmdpbmVlcmluZyBEZXBhcnRtZW50MRcwFQYDVQQDDA4qLnNvZ291Y2RuLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK1dsAnKhCwfCDDq54i8MBCV9UAvSRTP3QCKuugosszj7m177oiF/lYj5gY6R+6OdGGgsdXKMo9m+PrnZr1mD7E90KgDvYocQDSjU7YLNujeBjS3kvn0RHhw1WMF1jH2U5b6z+5dSawyaRt3/SaCbyostDBPCD9i5VzBmkZwr7Xd69Sjs29lSPo79g1o7lK8QDMl/f2muE3W/NqOzBoIh4QVaueF9EDVg2Q8hU22r2dkBGwRwYmT/QGcVSVrooTKpdjM7bWG7/faK6AMRbzWolsG35CsI5sLHAJvlI8F2Vc95epbYZsL7eRZC6pHpd4nuOo248JZxlFQpI8ZUUYUVEMCAwEAAaOCAvIwggLuMCcGA1UdEQQgMB6CDiouc29nb3VjZG4uY29tggxzb2dvdWNkbi5jb20wCQYDVR0TBAIwADAOBgNVHQ8BAf8EBAMCBaAwKwYDVR0fBCQwIjAgoB6gHIYaaHR0cDovL3NzLnN5bWNiLmNvbS9zcy5jcmwwYQYDVR0gBFowWDBWBgZngQwBAgIwTDAjBggrBgEFBQcCARYXaHR0cHM6Ly9kLnN5bWNiLmNvbS9jcHMwJQYIKwYBBQUHAgIwGQwXaHR0cHM6Ly9kLnN5bWNiLmNvbS9ycGEwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMB8GA1UdIwQYMBaAFF9gz2GQVd+EQxSKYCqy9Xr0QxjvMFcGCCsGAQUFBwEBBEswSTAfBggrBgEFBQcwAYYTaHR0cDovL3NzLnN5bWNkLmNvbTAmBggrBgEFBQcwAoYaaHR0cDovL3NzLnN5bWNiLmNvbS9zcy5jcnQwggF9BgorBgEEAdZ5AgQCBIIBbQSCAWkBZwB3AN3rHSt6DU+mIIuBrYFocH4ujp0B1VyIjT0RxM227L7MAAABXOgZdRgAAAQDAEgwRgIhAKskWMAz6ebKy+qSFUdDOiXBz5fofl3iO2BHhP7eEdwaAiEAgVKIZg+vUX1OrOsOA5iTWe0bvGv6mC1J7x/lCt/iBEAAdQCkuQmQtBhYFIe7E6LMZ3AKPDWYBPkb37jjd80OyA3cEAAAAVzoGXUxAAAEAwBGMEQCIBsZ6Ai390C8ENRfd26eksyoDN1LnryQzMiEz9eb22cyAiAcJnfuf9cZloZ3hhCMiBprzc8aW145p4TIxJYoAwZ2GAB1AO5Lvbd1zmC64UJpH6vhnmajD35fsHLYgwDEe4l6qP3LAAABXOgZdxAAAAQDAEYwRAIgErfMQ+gmTBNyZOp75+9wrK1z5owftb+pLRciYApe1H0CIBphLF/MmQwgAHbXifPFO9pqXxA1G15QIw/uHPgPT87xMA0GCSqGSIb3DQEBCwUAA4IBAQBHAv08G6SBGZevU0FE1TLTMQlK9CyWDbSb5tUpxd86CdRCeBOavUSnYRZvkSbISPI2sFxlM7VQAAfDrGCp07yVzA1aMfN1VYolsmYWLhMaSsAgetw4QiDeso5aAfOSmOsTqMKwkbFB4OwPuUVZm6J5BA8XcgIfH6g+9E3hR6On22CT2n+HaRg701Hvbmua3sIYBisR2uQprCNgDc6eUAnwMzjA20+RcW9NRH/KpOlgy0RaTpr7ONq9SdUarud35nUdemScQA38BXv8adpWUC3brgIxsZeece8gOJORPZRCf4G+Ssc3wfpWa8Kn9gTaqz5ocr6hQEUYG0LQ+Q1YrfouwC8BAwAAAAABAQAAAAA= request-method GET response-head HTTP/2.0 200 OK
+server: NWSs
+date: Sat, 21 Oct 2017 09:33:46 GMT
+content-type: application/javascript
+content-length: 21491
+cache-control: max-age=2592000
+expires: Mon, 20 Nov 2017 09:33:46 GMT
+last-modified: Tue, 29 Nov 2016 02:57:21 GMT
+x-nws-log-uuid: 82106afa-6548-4276-b7cd-dd1296eaba04
+accept-ranges: bytes
+x-daa-tunnel: hop_count=1
+x-cache-lookup: Hit From Disktank3, Hit From Inner Cluster
+X-Firefox-Spdy: h2
+ original-response-headers server: NWSs
+date: Sat, 21 Oct 2017 09:33:46 GMT
+content-type: application/javascript
+content-length: 21491
+cache-control: max-age=2592000
+expires: Mon, 20 Nov 2017 09:33:46 GMT
+last-modified: Tue, 29 Nov 2016 02:57:21 GMT
+x-nws-log-uuid: 82106afa-6548-4276-b7cd-dd1296eaba04
+x-cache-lookup: Hit From Disktank3
+accept-ranges: bytes
+x-daa-tunnel: hop_count=1
+x-cache-lookup: Hit From Inner Cluster
+X-Firefox-Spdy: h2
+ uncompressed-len 0 net-response-time-onstart 288 net-response-time-onstop 290   S�

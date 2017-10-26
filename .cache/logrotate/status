@@ -1,0 +1,24 @@
+logrotate state -- version 2
+"/home/wuhailong/.cache/upstart/im-config.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/dbus.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/unity-panel-service.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/update-notifier-crash-_var_crash__usr_bin_appstreamcli.0.crash.log" 2017-10-15-13:37:28
+"/home/wuhailong/.cache/upstart/update-notifier-crash-_var_crash__usr_bin_unity-control-center.1000.crash.log" 2017-9-18-19:53:22
+"/home/wuhailong/.cache/upstart/update-notifier-crash-_var_crash__usr_bin_gnome-software.1000.crash.log" 2017-10-15-13:37:28
+"/home/wuhailong/.cache/upstart/indicator-session.log" 2017-9-16-16:20:53
+"/home/wuhailong/.cache/upstart/*.log" 2017-9-26-14:0:0
+"/home/wuhailong/.cache/upstart/ssh-agent.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/update-notifier-cds.log" 2017-9-14-9:54:11
+"/home/wuhailong/.cache/upstart/gnome-keyring-ssh.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/unity-settings-daemon.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/window-stack-bridge.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/gpg-agent.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/bamfdaemon.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/upstart-event-bridge.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/indicator-power.log" 2017-9-9-23:22:23
+"/home/wuhailong/.cache/upstart/unity7.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/indicator-keyboard.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/hud.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/indicator-sound.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/update-notifier-release.log" 2017-10-20-22:43:8
+"/home/wuhailong/.cache/upstart/unity-panel-service-lockscreen.log" 2017-9-23-16:44:51

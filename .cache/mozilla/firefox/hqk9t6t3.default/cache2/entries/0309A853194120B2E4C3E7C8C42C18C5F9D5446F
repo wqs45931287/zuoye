@@ -1,0 +1,742 @@
+.vr15111251 .vrTitle {
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 26px;
+}
+.vr15111251 .vrTitle .aMore {
+	display: none;
+}
+.vr15111251 .vrTitle a:visited {
+	color: #741274
+}
+.vr15111251 .vrTitle a em {
+	text-decoration: underline;
+}
+.vr15111251 a {
+    color: #00c;
+    cursor: pointer;
+    outline: none;
+}
+.vr15111251 {
+	font-size: 13px;
+}
+.vr15111251 .vr15111251-vr-box-border {
+	border: 1px solid #ededed;
+	min-height: 20px;
+	margin: 5px 0;
+}
+.vr15111251 .vr15111251-vr-box-border .tb-wrap {
+	padding: 5px 10px;
+	border-bottom: 1px solid #f2f2f2;
+}
+.vr15111251 .vrTitle a {
+	display: inline-block;
+}
+
+/*---------------------------------------------*/
+.vr15111251 .sortTable {
+	width: 100%;
+	margin-top: 5px;
+}
+.vr15111251 .tab-vr-tit.mg0 {
+	margin-top: 0;
+}
+.vr15111251 .sortTable th {
+	font-weight: normal;
+	text-align: left;
+	vertical-align: top;
+	color: #999;
+	width: 32px;
+	line-height: 18px;
+}
+.vr15111251 .sortTable th span {
+	white-space: nowrap;
+    word-break:keep-all;
+	font-size: 13px;
+}
+.vr15111251 .sortTable td {
+	vertical-align: top;
+	min-width: 420px;
+	padding-bottom: 5px;
+}
+.vr15111251 .sortTable .aBox {
+	padding-right: 42px;
+	position: relative;
+}
+.vr15111251 .sortTable .no-pd {
+	padding-right: 0;
+}
+.vr15111251 .aBox {
+	font-size: 0;
+	letter-spacing: -4px;
+}
+.vr15111251 .aBox a, .vr15111251 .aBox span {
+	font-size: 13px;
+	letter-spacing: normal;
+	padding: 0 4px;
+	margin-right: 3px;
+	*margin-right: 2px;
+	display: inline-block;
+	text-decoration: none;
+	height: 18px;
+	line-height: 19px;
+	line-height: 20px\0;
+	*line-height: 20px;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+.vr15111251 .aBox span {
+	color: #bbb;
+}
+.vr15111251 .aBox a:hover {
+	text-decoration: underline;
+}
+.vr15111251 .aBox a:visited {
+	color: #00c;
+}
+.vr15111251 .aBox .cur {
+	border-radius: 1px;
+	background: #518ded;
+	color: #fff
+}
+.vr15111251 .aBox .cur:visited {
+	color: #fff;
+}
+.vr15111251 .aBox .cur:hover {
+	text-decoration: none;
+}
+.vr15111251 .aBox .show, .vr15111251 .aBox .hide, .vr15111251 .aBox .vrtit-more {
+	padding: 0 12px 0 0;
+	border: 0;
+	color: #77c;
+}
+.show, .hide, .vrtit-more {
+	background: url(arr.gif) no-repeat;
+}
+.show, .hide, .vrtit-more {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+}
+.vr15111251 .aBox .show:visited, .vr15111251 .aBox .hide:visited, .vr15111251 .aBox .vrtit-more:visited {
+	color: #7777cc;
+}
+
+.vr15111251 .aBox .vrtit-more:visited {
+	color: #741274;
+}
+/*end sort*/
+
+/****标签
+**********************/
+.vr15111251 .links span {
+    max-width: 260px;
+    white-space: nowrap;
+    word-break:keep-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.vr15111251 .links .cleaning,
+.vr15111251 .links .fee,
+.vr15111251 .links .anytime {
+	display: inline-block;
+	padding:2px 5px;
+	font-size: 12px;
+	margin-right: 10px;
+	color: #fff;
+}
+.vr15111251 .links .cleaning {
+	background-color: #6fc6eb;
+}
+.vr15111251 .links .fee {
+	background-color: #74abf0;
+}
+.vr15111251 .links .anytime {
+	background-color: #f87777;
+}
+/****button
+**********************/
+.vr15111251 .btn-box {
+	font-size: 0;
+}
+.vr15111251 .btn-box .btn {
+	display: inline-block;
+	padding:0 18px;
+	font-size: 13px;
+	margin-right: 10px;
+	color: #333;
+	border:1px solid #fff;
+	height: 28px;
+	line-height: 29px;
+	background:url(icon-common.gif) no-repeat;
+	padding-left: 32px;
+	border-radius: 2px;
+}
+.vr15111251 .btn-box .school {
+	background-color: #f4f8ff;
+	border-color:#dce7fb;
+	background-position: 8px -29px;
+}
+.vr15111251 .btn-box .tube {
+	background-color: #fff9e5;
+	border-color:#ffe0c7;
+	background-position: 8px -63px;
+}
+.vr15111251 .btn-box .five {
+	background-color: #ffeaed;
+	border-color:#fcd3d8;
+	background-position: 8px -98px;
+}
+.vr15111251 .btn-box .btn:hover {
+	text-decoration: none;
+}
+
+/****北京楼盘信息
+**********************/
+.vr15111251 .b-list a {
+	text-decoration: none;
+}
+.vr15111251 .b-list a:hover {
+	text-decoration: underline;
+}
+.vr15111251 .b-list li {
+	border-bottom:1px solid #f2f2f2;
+	padding:11px 10px;
+	overflow: hidden;
+	cursor: pointer;
+	zoom:1;
+}
+.vr15111251 .bj-property .b-list li {
+	cursor: default;
+}
+.vr15111251 .b-list .b-list-l {
+	float: left;
+	display: inline-block;
+    background: url("building2.jpg") center;
+}
+.vr15111251 .b-list-l .img-wrap {
+	position: relative;
+}
+.vr15111251 .b-list-l .img-wrap:hover em {
+	text-decoration: none;
+}
+.vr15111251 .b-list-l .mask {
+	position: absolute;
+	right:0;
+	bottom:0;
+	_right:-1px;
+	_bottom:-1px;
+	width: 81px;
+	height: 22px;
+	text-align: center;
+}
+.vr15111251 .b-list-l .mask .text {
+	color: #fff;
+	position: relative;
+	z-index: 4;
+	line-height: 23px;
+}
+.vr15111251 .b-list-l .mask .shadow {
+	position: absolute;
+	right:0;
+	bottom:0;
+	width: 81px;
+	height: 22px;
+	background-color: #333;
+	opacity:0.6;
+	filter:alpha(opacity=60);
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+	z-index: 2;
+}
+.vr15111251 .b-list .b-list-r {
+	padding-left: 8px;
+	overflow: hidden;
+	zoom:1;
+	color: #000ccc;
+    height: 78px;
+}
+.vr15111251 .b-list-r .infor {
+	margin-right: 80px;
+    width: 320px;
+}
+.vr15111251 .b-list-r h2 {
+	margin-bottom: 17px;
+}
+.vr15111251 .b-list-r h2 a {
+	font-size: 14px;
+	color: #000ccc;
+}
+.vr15111251 .b-list-r p {
+	margin-bottom: 10px;
+	*margin-bottom: 7px;
+}
+.vr15111251 .b-list-r .address span,
+.vr15111251 .b-list-r .tel {
+	font-size: 13px;
+	color: #333;
+	width: 300px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    word-break:keep-all;
+	white-space: nowrap;
+}
+.vr15111251 .b-list-r .address span {
+	display: inline-block;
+	width: auto;
+	max-width: 276px;
+	_width:276px;
+	padding-right: 6px;
+}
+.vr15111251 .b-list-r .address a {
+	display: inline-block;
+	width: 12px;
+	height: 16px;
+	background:url(icon-common.gif) no-repeat 0 0;
+	cursor: pointer;
+}
+.vr15111251 .b-list-r .links {
+	margin-bottom: 0;
+}
+.vr15111251 .b-list-r .links a {
+	color: #00c;
+	margin-right: 16px;
+}
+.vr15111251 .b-list-r .price {
+	float: right;
+	display: inline;
+	color: #ff6949;
+	font-size: 16px;
+	padding-top: 40px;
+	text-align: center;
+}
+.vr15111251 .b-list li.r-last {
+	margin-right: 0;
+}
+.vr15111251 .b-list .img-wrap,
+.vr15111251 .b-list img {
+	display: block;
+	width: 132px;
+	height: 99px;
+}
+
+/****华清嘉园租房
+**********************/
+.vr15111251 .loca-rent h2 {
+	font-size: 13px;
+	font-weight: normal;
+	margin-bottom: 15px;
+	*margin-bottom: 13px;
+    display:block;
+    width:320px;
+    white-space: nowrap;
+    word-break:keep-all;
+    /*text-overflow: ellipsis;
+    overflow: hidden;*/
+}
+.ie8 .vr15111251 .loca-rent h2 {
+	margin-bottom: 13px;
+}
+.vr15111251 .loca-rent h2 span {
+	color:#333;
+}
+.vr15111251 .loca-rent h2 em {
+	color:#999;
+	margin:0 5px;
+}
+.vr15111251 .loca-rent h2 a {
+	color:#000ccc;
+	font-size: 14px;
+	padding-right: 5px;
+	font-weight: bold;
+}
+.vr15111251 .loca-rent .links {
+	font-size: 0;
+	margin-top: 10px;
+	*margin-top: 11px;
+}
+.ie8 .vr15111251 .loca-rent .links {
+	margin-top: 12px;
+}
+.vr15111251 .loca-rent .img-wrap,
+.vr15111251 .loca-rent img {
+	width: 104px;
+	height: 78px;
+}
+.vr15111251 .loca-rent .address span {
+	max-width: 260px;
+    _width:expression(this.offsetWidth>260?"260px":"");
+    display: inline-block;
+    _display: inline;
+}
+.vr15111251 .loca-rent .price {
+	padding-top: 0;
+}
+.vr15111251 .loca-rent .price .lots,
+.vr15111251 .loca-rent .price .unit-p,
+.vr15111251 .second-hand .unit-p {
+	color: #999;
+	font-size: 13px;
+	display: block;
+	text-align: center;
+	margin-top: 12px;
+}
+.vr15111251 .loca-rent .offset {
+	left:-24px;
+	width:100%;
+	padding-right: 24px;
+}
+/****北京二手房
+**********************/
+.vr15111251 .bj-second .img-wrap,
+.vr15111251 .bj-second img {
+	width: 116px;
+	height: 87px;
+}
+.vr15111251 .bj-second h2 {
+	margin-bottom: 13px;
+	*margin-bottom: 12px;
+}
+.vr15111251 .bj-second .mask .shadow {
+	_bottom:-1px;
+}
+/****PAGE
+**********************/
+.vr15111251 .jzwdPage {
+	font-size: 0;
+	letter-spacing: -6px;
+	text-align: center;
+	line-height: 22px;
+	padding:10px 0;
+	height: 22px;
+	overflow: hidden;
+}
+.vr15111251 .jzwdPage a, .vr15111251 .jzwdPage span {
+	font-size: 13px;
+	letter-spacing: normal;
+	display: inline-block;
+	margin: 0 2px;
+	*margin: 0 2px 0 1px;
+	border: 1px solid #ebebeb;
+	padding: 0 7px  0 6px;
+	line-height: 20px;
+	text-align: center;
+	color: #7777cc;
+}
+.vr15111251 .jzwdPage a {
+	font-size: 13px;
+	letter-spacing: normal;
+	color: #7777cc;
+	text-decoration: none;
+}
+.vr15111251 .jzwdPage a.page-next {
+	margin-left: 6px;
+}
+.vr15111251 .jzwdPage a.page-prev {
+	margin-right: 6px;
+}
+.vr15111251 .jzwdPage a.blind {
+	background: none;
+	width: 41px;
+	visibility: hidden;
+}
+.vr15111251 .jzwdPage a.blind:hover {
+	background: none;
+	border: 0;
+}
+.vr15111251 .jzwdPage .page-break {
+	margin: 0 2px;
+	border: 1px solid #fff;
+	color: #7777cc;
+}
+.vr15111251 .jzwdPage span.page-cur {
+	background: #f2f2f2;
+	border: 1px solid #e5e5e5;
+	color: #333;
+	font-weight: bold;
+}
+.vr15111251 .jzwdPage a:hover {
+	background: #f4f8ff;
+	border: 1px solid #dce7fb;
+}
+.vr15111251 .fb {
+    line-height: 22px;
+    color: #666;
+}
+cite, cite a {
+	font-size: 12px;
+    color: #008000;
+    font-style: normal;
+}
+
+/****Tab
+**********************/
+.vr15111251 .tab-vr-tit {
+	height: 32px;
+	background: #f5f5f5 url(skin_x.gif) repeat-x 0 -11px;
+	zoom: 1;
+}
+.vr15111251 .tab-vr-tit:after, .tab-vr-lis:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+.vr15111251 .tab-vr-lis {
+	zoom: 1;
+}
+.vr15111251 .tab-vr-lis li {
+	float: left;
+}
+.vr15111251 .tab-vr-lis a {
+	height: 30px;
+	line-height: 30px;
+	padding: 1px 22px 0;
+	/**padding: 1px 6px 0;*/
+	/*_padding: 1px 5px 0;*/
+	font-size: 13px;
+	letter-spacing: normal;
+	text-decoration: none;
+	border-bottom: 1px solid #e4e4e4;
+	background: #f5f5f5;
+	display: inline-block;
+	color: #666;
+	text-align: center;
+}
+.vr15111251 .tab-vr-lis .cur a {
+	border: 1px solid #e4e4e4;
+	padding: 0 22px;
+	border-bottom: 1px solid #FFF;
+	background: #FFF;
+	font-weight: bold;
+	color: #333;
+	cursor: default;
+}
+.vr15111251 .aggrBox .tab-vr-tit {
+	background-color: #fff;
+}
+.vr15111251 .aggrBox .tab-vr-lis a {
+	margin-right: 5px;
+}
+.vr15111251 .tab-vr-lis a:visited {
+	color: #666;
+}
+.vr15111251 .tab-vr-lis .cur a:visited {
+	color: #333;
+}
+.vr15111251 .tab-tit-right {
+	float: right;
+}
+.vr15111251 .tit-more {
+	float: left;
+	line-height: 30px;
+	margin-right: 10px;
+	color: #77c;
+	text-decoration: none;
+	margin-top: 1px;
+}
+.vr15111251 .tit-more:hover {
+	text-decoration: underline;
+}
+.vr15111251 .tab-vr-lis .vr-tit-more {
+	color: #77c;
+	background-color: #f5f5f5;
+}
+.vr15111251 .aggrBox .tab-vr-lis .vr-tit-more {
+	background-color: #fff;
+}
+.vr15111251 .tab-vr-lis .vr-tit-more:hover {
+	text-decoration: underline;
+}
+.vr15111251 .tab-tit-one-result {
+	display: inline-block;
+	overflow: hidden;
+	margin-top: 5px;
+	height: 22px;
+	line-height: 22px;
+	text-decoration: none;
+	color: #666;
+}
+.vr15111251 .tab-tit-one-result img {
+	position: relative;
+	top: 3px;
+	margin-right: 5px;
+}
+
+/****万科城市花园
+**********************/
+.vr15111251 .substance .img-wrap,
+.vr15111251 .substance img {
+	width: 120px;
+	height: 161px;
+}
+.vr15111251 .substance li {
+	border-bottom:none;
+	cursor: default;
+}
+.vr15111251 .substance .outline li {
+	padding: 0;
+	font-size: 13px;
+	color: #333;
+	margin-bottom: 9px;
+	*margin-bottom: 7px;
+}
+.ie8 .vr15111251 .substance .outline li {
+	margin-bottom: 8px;
+}
+.vr15111251 .substance .average-p {
+	color: #ff6949;
+	margin-right: 10px;
+	font-weight: bold;
+}
+.vr15111251 .substance .notice,
+.vr15111251 .substance .where {
+	display: inline-block;
+	width: 175px;
+}
+.vr15111251 .substance .trend {
+	color: #cc0000;
+	font-family: initial;
+}
+.vr15111251 .substance .pt {
+	color: #00c;
+	background:url(icon-common.gif) no-repeat 0 -138px;
+	padding-left: 16px;
+}
+.vr15111251 .substance .map {
+	color: #00c;
+	background:url(icon-common.gif) no-repeat 0 0;
+	padding-left: 15px;
+}
+.vr15111251 .substance .outline .last {
+	margin-bottom: 0;
+}
+.vr15111251 .substance .outline .last a {
+	margin-right: 10px;
+}
+.vr15111251 .substance .photo-show {
+	overflow: hidden;
+	zoom:1;
+	margin-top: 10px;
+}
+.vr15111251 .substance .photo-show li {
+	float: left;
+	display: inline;
+	margin-right: 11px;
+}
+.vr15111251 .substance .photo-show li.fourth {
+	margin-right: 0;
+}
+.vr15111251 .substance .photo-show a {
+	display: block;
+}
+.vr15111251 .substance .photo-show img {
+	display: block;
+	width: 124px;
+	height: 93px;
+}
+.vr15111251 .substance .outer {
+	padding:0 9px;
+}
+.vr15111251 .substance .layout {
+	margin:8px 0 6px;
+	color: #333;
+}
+.vr15111251 .substance .layout span {
+	margin-right: 6px;
+}
+.vr15111251 .substance .layout em {
+	color: #ff6949;
+}
+.vr15111251 .more-box {
+	padding: 11px;
+	border-top:1px solid #f2f2f2;
+}
+.vr15111251 .more-box a {
+	color: #7777cc;
+	font-size: 12px;
+	text-decoration: none;
+}
+.vr15111251 .more-box a:hover {
+	text-decoration: underline;
+}
+
+/* 新增精准楼盘-二手房/租房聚合 */
+.vr15111251 .combine {
+	border:none;
+	border-bottom: 1px solid #ededed;
+}
+.vr15111251 .combine .loca-rent {
+	*padding-bottom:6px; 
+}
+.vr15111251 .combine .tb-wrap {
+	border: 1px solid #e4e4e4;
+	border-top: none;
+}
+.vr15111251 .combine .b-list,
+.vr15111251 .combine .jzwdPage {
+	border-left: 1px solid #e4e4e4;
+	border-right: 1px solid #e4e4e4;
+}
+
+.vr15111251 .show {
+    background-position: right 4px;
+}
+.vr15111251 .hide {
+    background-position: right -25px;
+}
+.vr15111251 .vrtit-more {
+    background-position: right -80px;
+}
+/*add by zjj*/
+.vr15111251 .b-list-r p,.vr15111251 .loca-rent h2{
+	margin-bottom: 0;
+	padding-bottom: 9px;
+}
+.vr15111251 .loca-rent h2,.vr15111251 .loca-rent .address span{
+	line-height: 20px;
+	*line-height: 18px;
+	_line-height: 18px;
+}
+.vr15111251 .loca-rent .links{
+	margin-top: 0;
+}
+.vr15111251 .links span{
+	vertical-align: middle;
+	_display:inline;*display:inline; zoom:1/*解决IE下字体偏上问题*/
+}
+.vr15111251 .b-list-r .infor{
+	font-size: 0;
+}
+.vr15111251 .loca-rent .price .lots, .vr15111251 .loca-rent .price .unit-p, .vr15111251 .second-hand .unit-p{
+	margin-top: 0px;
+}
+.vr15111251 .loca-rent .price p{
+	padding-bottom: 10px;
+	margin-bottom: 0;
+	line-height: 20px;
+}
+/*add by zjj end*/(hw��      Y��Y��>S�HZ�z   ,    :https://galaxy.sogoucdn.com/galaxy/8008.css necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/2.0 200 OK
+server: NWSs
+date: Sat, 21 Oct 2017 09:33:46 GMT
+content-type: text/css
+content-length: 14705
+cache-control: max-age=2592000
+expires: Mon, 20 Nov 2017 09:33:46 GMT
+last-modified: Tue, 29 Nov 2016 02:44:58 GMT
+x-nws-log-uuid: 78a5484c-c497-45ff-88f4-4d6deb8aecde
+x-daa-tunnel: hop_count=1
+x-cache-lookup: Hit From Disktank3, Hit From Inner Cluster
+X-Firefox-Spdy: h2
+ original-response-headers server: NWSs
+date: Sat, 21 Oct 2017 09:33:46 GMT
+content-type: text/css
+content-length: 14705
+cache-control: max-age=2592000
+expires: Mon, 20 Nov 2017 09:33:46 GMT
+last-modified: Tue, 29 Nov 2016 02:44:58 GMT
+x-nws-log-uuid: 78a5484c-c497-45ff-88f4-4d6deb8aecde
+x-cache-lookup: Hit From Disktank3
+x-daa-tunnel: hop_count=1
+x-cache-lookup: Hit From Inner Cluster
+X-Firefox-Spdy: h2
+ uncompressed-len 0 net-response-time-onstart 247 net-response-time-onstop 338   9q
