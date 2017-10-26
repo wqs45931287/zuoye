@@ -210,3 +210,9 @@ cd SQL3
 ls
 nano people_num INT(10)DEAULT'10'
 gedit MySQL-03-01.sql 
+git add .
+git commit -m 'commit my cv'
+git remote add origin https://github.com/wqs45931287/zuoye.git
+git push -u origin master
+git remote add origin https://github.com/wqs45931287/zuoye.git
+git push -u origin master
